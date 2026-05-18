@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+    --accent: #ff6b00;
+    --ink: #0a0a0a;
+}
+
+body {
+    font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    background: #f8f7f4;
+    color: var(--ink);
+}
+
+.app-shell {
+    background:
+        radial-gradient(
+            circle at 20% -10%,
+            rgba(255, 107, 0, 0.12),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(0, 0, 0, 0.08),
+            transparent 42%
+        ),
+        #f8f7f4;
+}
+
+@keyframes toast-fly {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -16px, 0) scale(0.96);
+    }
+    10% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    86% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(0, -10px, 0) scale(0.98);
+    }
+}
+
+.toast-fly {
+    animation: toast-fly 7s ease-in-out forwards;
+}
+
+.toast-card {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: linear-gradient(135deg, #151515, #0b0b0b);
+    box-shadow:
+        0 18px 30px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 0 20px rgba(255, 107, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.toast-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--accent);
+}
