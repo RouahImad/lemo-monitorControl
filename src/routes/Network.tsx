@@ -79,10 +79,8 @@ const Network = () => {
         setStopState({ loading: true });
         try {
             const data = await stopNetworkScan();
-            console.log("Stop scan response:", data);
             setStopState({ data });
         } catch (error: any) {
-            console.log("Error stopping network scan:", error);
             setStopState({
                 error: String(error?.error ?? "Failed to stop network scan."),
             });

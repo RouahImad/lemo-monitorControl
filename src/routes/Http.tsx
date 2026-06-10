@@ -88,7 +88,9 @@ const Http = () => {
         } catch (error: any) {
             setForceState({
                 error: String(
-                    error?.error ?? "Failed to simulate brute force.",
+                    typeof error === "string"
+                        ? error
+                        : (error?.error ?? "Failed to simulate brute force."),
                 ),
             });
         }
@@ -226,7 +228,7 @@ const Http = () => {
                             </select>
                         </label>
                         <label className="grid gap-2 text-sm">
-                            Source IP (optional)
+                            Source IP
                             <input
                                 value={forceIp}
                                 onChange={(event) =>
