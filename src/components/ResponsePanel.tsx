@@ -2,7 +2,6 @@ import type { ResponsePanelProps } from "../types/ui";
 
 const ResponsePanel = ({ title, state }: ResponsePanelProps) => {
     if (!state) return null;
-    // console.log("ResponsePanel state:", state);
     let body = "";
     if (state.loading) {
         body = "Loading...";
