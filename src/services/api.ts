@@ -35,7 +35,6 @@ export const spikeResource = (input: SpikeResourceInput) =>
             params: {
                 target: input.target,
                 delta: input.delta,
-                durationMs: input.durationMs,
             },
         }),
     );
