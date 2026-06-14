@@ -14,7 +14,6 @@ const Resources = () => {
 
     const [target, setTarget] = useState("cpu");
     const [delta, setDelta] = useState("80");
-    const [durationMs, setDurationMs] = useState("15000");
 
     const [generateState, setGenerateState] = useState<ResponseState | null>(
         null,
@@ -65,13 +64,8 @@ const Resources = () => {
 
     const onSpike = async () => {
         const deltaValue = Number(delta);
-        const durationValue = Number(durationMs);
         if (!Number.isFinite(deltaValue)) {
             setSpikeState({ error: "Delta must be a valid number." });
-            return;
-        }
-        if (!Number.isFinite(durationValue) || durationValue <= 0) {
-            setSpikeState({ error: "Duration must be greater than 0." });
             return;
         }
 
@@ -80,7 +74,6 @@ const Resources = () => {
             const data = await spikeResource({
                 target,
                 delta: deltaValue,
-                durationMs: durationValue,
             });
             setSpikeState({ data });
         } catch (error: any) {
@@ -183,18 +176,6 @@ const Resources = () => {
                                 }
                                 className="rounded-lg border border-black/20 px-3 py-2"
                                 type="number"
-                            />
-                        </label>
-                        <label className="grid gap-2 text-sm">
-                            Duration (ms)
-                            <input
-                                value={durationMs}
-                                onChange={(event) =>
-                                    setDurationMs(event.target.value)
-                                }
-                                className="rounded-lg border border-black/20 px-3 py-2"
-                                type="number"
-                                min={1}
                             />
                         </label>
                     </div>

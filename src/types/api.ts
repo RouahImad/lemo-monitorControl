@@ -7,7 +7,6 @@ type GenerateResourcesInput = {
 type SpikeResourceInput = {
     target: string;
     delta: number;
-    durationMs: number;
 };
 
 type SimulateApacheInput = {
